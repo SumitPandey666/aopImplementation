@@ -1,5 +1,6 @@
 package com.custom.aopimpl.service;
 
+import com.custom.aopimpl.annotation.AuditOperation;
 import com.custom.aopimpl.annotation.LogExecutionTime;
 import com.custom.aopimpl.annotation.TrackErrors;
 import com.custom.aopimpl.entity.Product;
@@ -15,6 +16,7 @@ public class ProductService {
     private ProductRepository productRepository;
 
     @LogExecutionTime
+    @AuditOperation("Create New Product")
     public Product saveProduct(Product product){
         return productRepository.save(product);
     }
@@ -32,6 +34,7 @@ public class ProductService {
 
     @LogExecutionTime
     @TrackErrors
+    @AuditOperation("Delete Product")
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
     }

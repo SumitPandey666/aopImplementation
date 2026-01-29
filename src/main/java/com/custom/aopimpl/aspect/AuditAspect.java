@@ -19,8 +19,6 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 @Slf4j
 public class AuditAspect {
-
-    @Autowired
     private final AuditLogRepository auditLogRepository;
 
     @AfterReturning(pointcut = "@annotation(auditAnnotation)", returning = "result")
